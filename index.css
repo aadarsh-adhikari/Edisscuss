@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+a:-webkit-any-link{
+  text-decoration: none;
+}
+nav {
+    background-color: aquamarine;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #000;
+}
+footer{
+    background-color: black;
+    height: 150px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+ h1{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 25px;
+}
+footer a{
+    text-decoration: none;
+    color: white ;
+}
+.social i{
+    margin: 15px;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 50%;
+    transition: 0.5s ease-in-out;
+}
+.social i:hover{
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+}
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    font-family: arial;
+    margin: 20px;
+  }
+
+  .cardcontent{
+    width: 250px;
+    height: 400px;
+  }
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  .container  {
+    padding: 2px 16px;
+  }
+  h4{
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .card img{
+    height: 200px;
+    width: 250px;
+  }
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: rgb(255, 255, 255);
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  button:hover{
+    opacity: 0.7;
+  }   
+   .jumbotron {
+    background-color: #3498db;
+    color: #000000;
+    text-align: center;
+    padding: 30px 20px;
+    margin: 20px auto 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+.whole {
+  margin: 4%;
+}
+.jumbotron h1 {
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+.jumbotron p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2c3e50;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #1a252f;
+}
+
+hr {
+    margin: 8px;
+    height: 2px;
+}
+
+.formcontainer {
+  width: 300px;
+  margin: 100px auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 16px;
+}
+.sign button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.sign  button:hover {
+  background-color: #45a049;
+}
+
+b{
+  font-size: 14px;
+  margin-bottom: 10px;
+}
