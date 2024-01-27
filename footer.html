@@ -1,114 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-   <title>Document</title>
    <style>
-     *{
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-     }
-     footer{
-      background-color: #111;
-     }
-     .footer-container{
-      width: 100%;
-      padding:20px 30px 20px;
-     }
-     .social{
-      display: flex;
-      justify-content: center;
-     }
-     .social a{
-      text-decoration: none;
-      padding: 10px;
-      margin: 10px;
-      background-color: #111;
-      border-radius: 40%;
-     }
-     .social a i{
-      font-size: 1.5em;
-      color: white;
-      background-color: #111;
-     }
-     h1{
-      text-align: center;
-      color: white;
-      opacity: 0.9;
-     }
-     .links{
-      color: white;
-      font-size: large;
-      opacity: 0.7;
-      text-align: center;
-      text-decoration: underline;
-     }
-    /*hover effect on social media icon*/
-    .social a:hover{
-      background-color: white;
-      transition: 0.9s;
-    }
-    .community{
-      margin: 30px 0;
-    }
-    .community ul{
-      display: flex;
-      justify-content: center;
-    }
-    .community ul li a{
-      color: white;
-      margin: 30px;
-      text-decoration: none;
-      font-size: 1.3em;
-      opacity: 0.7;
-      transition: 0.9s;
-    }
-    .community ul li a:hover{
-      opacity: 1.5;
-      transition: 0.5s;
-      text-decoration: underline;
-    }
-    .footer-bottom{
-      background-color: #000;
-      text-align: center;
-      color: white;
-      padding: 20px;
-    }
- </style>
+      
+      footer {
+         background-color: #111;
+      }
+
+      .footer-container {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-evenly;
+         padding: 20px;
+         box-sizing: border-box;
+      }
+
+      .social, .quicklink {
+         flex: 1;
+         text-align: center;
+      }
+
+      .social h1, .quicklink h1 {
+         color: white;
+         opacity: 0.9;
+      }
+
+      .socialflex {
+         display: flex;
+         justify-content: center;
+      }
+
+      .social a {
+         padding: 10px;
+         font-size: 25px;
+         text-decoration: none;
+         margin: 5px 2px;
+         border-radius: 40%;
+         color: white;
+      }
+      
+      .social a:hover {
+         opacity: 0.7;
+         color: rgb(0, 0, 0);
+         background-color: rgb(255, 255, 255);
+      }
+
+      .quicklink .community {
+         margin: 10px 0;
+      }
+
+      .community ul {
+         display: flex;
+         justify-content: center;
+         flex-wrap: wrap;
+         list-style: none;
+
+      }
+
+      .community ul li a {
+         color: white;
+         margin: 10px;
+         text-decoration: none;
+         font-size: 1em;
+         opacity: 0.7;
+         transition: 0.9s;
+      }
+
+      .community ul li a:hover {
+         opacity: 1.5;
+         transition: 0.5s;
+         text-decoration: underline;
+      }
+
+      .footer-bottom {
+         background-color: #000;
+         text-align: center;
+         color: white;
+         padding: 20px;
+      }
+
+      /* Responsive Styles */
+      @media screen and (max-width: 768px) {
+         .footer-container {
+            flex-direction: column;
+         }
+         .social, .quicklink {
+            margin-bottom: 20px;
+         }
+      }
+      @media screen and (max-width: 768px) {
+      }
+   </style>
 </head>
+
 <body>
    <footer>
-      <h1>Join with us</h1>
       <div class="footer-container">
-       <div class="social">
-          <a href="#"><i class="fa fa-github"></i>  </a>
-          <a href="#"><i class="fa fa-facebook"></i>  </a>
-          <a href="#"><i class="fa fa-instagram"></i>  </a>
-          <a href="#"><i class="fa fa-youtube"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-google"></i></a>
-       </div>
-       <p class="links"> Quick Links:</p>
-        <div class="community">
-          <ul>
-             <li> <a href="#">About us</a></li>
-             <li> <a href="#">Teams</a></li>
-             <li> <a href="#">Terms & Condition</a></li>
-             <li> <a href="#">Contact us</a></li>
-          </ul>
-       </div>
-       <div class="footer-bottom">
-          <p>
-             Copyright &copy;2024; Designed by <span>Aadarsh Adhikari</span>
-          </p>
-       </div>
+         <div class="social">
+            <h1>Join with us</h1>
+            <div class="socialflex">
+               <a href="#" class="fa fa-github"></a>
+               <a href="#" class="fa fa-facebook"></a>
+               <a href="#" class="fa fa-instagram"></a>
+               <a href="#" class="fa fa-youtube"></a>
+               <a href="#" class="fa fa-twitter"></a>
+            </div>
+         </div>
+         <div class="quicklink">
+            <h1>Quick links</h1>
+            <div class="community">
+               <ul>
+                  <li><a href="#">About us</a></li>
+                  <li><a href="#">Teams</a></li>
+                  <li><a href="#">Terms & Condition</a></li>
+                  <li><a href="#">Contact us</a></li>
+               </ul>
+            </div>
+         </div>
       </div>
- </footer>
-     
-</body>
-</html>
+      <div class="footer-bottom">
+         <p>
+            Copyright &copy <span id="currentYear"></span> Designed by <span>Aadarsh Adhikari</span>
+         </p>
+      </div>
+   </footer>
 
+   <script>
+      // Update the current year dynamically
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+   </script>
