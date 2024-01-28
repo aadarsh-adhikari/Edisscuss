@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +14,7 @@
         margin: 0 auto 0 auto;
     }
 
-    .whole {
+    section{
         margin: 4%;
     }
 
@@ -61,10 +62,12 @@
         margin: 8px;
         height: 2px;
     }
-
+ 
     .media-object {
     display: flex;
     align-items: center;
+    justify-content:flex-start;
+    flex-wrap:wrap;
     margin-top: 30px;
     padding: 20px;
     border: 1px solid red;
@@ -144,13 +147,35 @@
         .welcome{
             margin-top:40px;
         }
+        .media-object .comment {
+    background-color: #007bff;
+    width:100%
+    color: #ffffff;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    outline: none; 
+    margin:8px;
+
+}
+
+.media-object .comment:hover {
+    background-color: #0056b3;
+}
+
+
     </style>
 </head>
 <body>
     <?php require_once('nav.php') ;
         require_once ('connect.php');
     ?>
-    <div class=whole>
+   <section>
+   <div class=whole>
      <?php
     $id = $_GET['catid'];
     $sql = " SELECT * FROM `topics` WHERE id =$id  ";
@@ -158,20 +183,22 @@
     $noresult = true;
     while ($row = mysqli_fetch_assoc($result)){
         $name = $row['category_name'];
+    
     }
     ?>
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $problemtitle =$_POST['problemTitle'];
-    $problemDescription =$_POST['problemDescription'];
+    $problemdescription =$_POST['problemDescription'];
+// Replace < with &lt; and > with &gt;
+   $problemtitle = str_replace(['<', '>'], ['&lt;', '&gt;'], $problemtitle);
+   $problemdescription = str_replace(['<', '>'], ['&lt;', '&gt;'], $problemdescription);
     $userid = $_SESSION['username'];
-    $sql ="INSERT INTO `thread` (`thread_title`, `thread_des`, `thread_cat_id`, `thread_user_id`, `time`) VALUES ( '$problemtitle', '$problemDescription', '$id', '$userid', current_timestamp())";
+    $id = $_GET['catid'];
+    $sql ="INSERT INTO `thread` (`thread_title`, `thread_des`, `thread_cat_id`, `thread_user_id`, `time`) VALUES ( '$problemtitle', '$problemdescription', '$id', '$userid', current_timestamp())";
     $result = mysqli_query($conn , $sql);
-    if ($result) {
-        // Redirect after successful processing
-        header("Location: " . $_SERVER['REQUEST_URI']);
-        exit();
-    }
+    
+    
     }
     ?>
     <h1 class='welcome'>welcome to <?php echo $name ?> Disscussion </h1>
@@ -199,7 +226,7 @@
     }
     
     ?>
-        <h1>Browse Questions</h1>
+        <h1 class="browse">Browse Questions</h1>
          <div class="postcontent" style="display: flex;flex-direction: column;flex-wrap: wrap;align-items: flex-start;align-content: center;">
          <?php
     $id = $_GET['catid'];
@@ -218,7 +245,9 @@
         <p class="username"><b>Posted by/ ' .$userid . '</b></p>
             <p class="ques"><a href="threadcontent.php?thread_id='.$id.'">' .$title .'</a></p>
             <p class="ans">'.$des.'</p>
+         
         </div>
+        <a href="threadcontent.php?thread_id='.$id.'" style=" display: contents; "> <button class="comment"> comment</button></a>
     </div>';
     }
     if($noresult){
@@ -228,6 +257,9 @@
 
  </div>
 </div>
+   </section>
+<?php
+    include "footer.html";
+    ?>
 </body>
-
 </html>
