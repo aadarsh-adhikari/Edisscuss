@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,21 +11,24 @@
         margin: 0;
         padding: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0 auto 0 auto;
     }
 
     a {
         text-decoration: none;
         color: black;
     }
+
     .media-object {
-    display: flex;
-    align-items: center;
-    margin-top: 30px;
-    padding: 20px;
-    border: 1px solid red;
-    width: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        padding: 20px;
+        border: 1px solid red;
+        width: 70%;
     }
+
     .media-object img {
         border-radius: 50%;
         max-width: 70px;
@@ -32,19 +36,20 @@
     }
 
     .userproblem p {
-        margin-top:8px;
+        margin-top: 8px;
         font-size: 20px;
     }
-   
+
     .userproblem .ans {
         margin-top: 10px;
         font-size: 15px;
     }
 
-    a:hover , a .login{
+    a:hover,
+    a .login {
         color: blue;
     }
-    
+
 
     .formcontent {
         display: flex;
@@ -75,15 +80,40 @@
         border-radius: 4px;
         box-sizing: border-box;
     }
-  
+    .reply{
+        display:flex;
+        justify-content:center;
+    }
     </style>
 </head>
 
 <body>
-    <?php require_once('nav.php') ;
+   <?php require_once('nav.php') ;
         require_once ('connect.php');
         
     ?>
+      <section>
+      <h1>Reply for:</h1>
+
+      <?php
+   $replyid = $_GET['thread_id'];
+   $sql = "SELECT * FROM `thread` WHERE thread_id=$replyid";
+   $result =mysqli_query($conn, $sql);
+   while ($row = mysqli_fetch_assoc($result)){
+    $title = $row['thread_title'];
+    $des =$row['thread_des'];
+    echo '<div class="reply">
+    <div class="media-object">
+    <img src="img_avatar.png" alt="Media Object Image">
+    <div class="userproblem">
+        <p class="ques">'.$title .'</a></p>
+        <p class="ans">'.$des.'</p>
+    </div>
+</div>
+    </div>';
+   }
+   
+ ?>
     <?php 
         if (isset($_SESSION['logedin']) && $_SESSION['logedin'] == true){
 
@@ -96,8 +126,8 @@
 
         <button type="submit">Post comment</button>
     </form>
-</div>';
-        }
+ </div>';
+ }
         else{
             echo"<div class='notlogedin'>
             <P style='text-align:center; font-size:20px; margin:20px;'>You are not logedin.Please<a href='login.php' style='text-decoration:underline; color:skyblue;'' class='login'>Login</a> to start a disscussion</p>
@@ -105,10 +135,10 @@
         }
 
  ?>
-    
+ 
     <h1>Disscussion</h1>
     <div class="postcontent"
-        style="display: flex;flex-direction: column;flex-wrap: wrap;align-items: flex-start;align-content: center;">
+        style="display: flex;flex-direction: column;flex-wrap: wrap;align-items: flex-start;align-content: center; margin-bottom: 5%;">
         <?php
     
     $id = $_GET['thread_id'];
@@ -132,9 +162,12 @@
         echo "be the first one to post";
     }
     ?>
+    </div>
     <?php 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $comment = $_POST['comment'];
+        $comment= str_replace(['<', '>'], ['&lt;', '&gt;'], $comment);
+
         $commentedBy = $_SESSION['username'];
         $sql = "INSERT INTO `comment` (`comment_content`, `thread_id`, `comment_by`, `comment_time`) 
                 VALUES ('$comment', '$id', '$commentedBy', current_timestamp())";
@@ -143,7 +176,10 @@
         exit();
     } 
     ?>
-
+   </section>
+    <?php
+    include "footer.html";
+    ?>
 
 </body>
 
