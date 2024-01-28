@@ -7,58 +7,18 @@
 body {
     font-family: Arial, sans-serif;
 }
+.logo{
+  font-size: 40px;
+  margin-left: 10%;
+  font-weight: bold;
+  color: #FF6347;
+  cursor: pointer;
+  background: linear-gradient(96deg, #290fff, red);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 a:-webkit-any-link{
   text-decoration: none;
-}
-nav {
-    background-color: aquamarine;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-    margin-left: 20px;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: #000;
-}
-footer{
-    background-color: black;
-    height: 150px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
- h1{
-    color: rgb(0, 0, 0);
-    text-align: center;
-    font-size: 25px;
-}
-footer a{
-    text-decoration: none;
-    color: white ;
-}
-.social i{
-    margin: 15px;
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-    background-color: white;
-    padding: 10px;
-    border-radius: 50%;
-    transition: 0.5s ease-in-out;
-}
-.social i:hover{
-    color: #ffffff;
-    background-color: rgb(0, 0, 0);
 }
 .content{
     display: flex;
@@ -76,9 +36,10 @@ footer a{
     width: 250px;
     height: 400px;
   }
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
+
+ .card:hover img {
+    border-radius: 18px 18px 0 0; 
+}
   .container  {
     padding: 2px 16px;
   }
@@ -86,10 +47,12 @@ footer a{
     text-align: center;
     margin-bottom: 8px;
   }
+
   .card img{
     height: 200px;
     width: 250px;
   }
+ 
   button {
     border: none;
     outline: 0;
@@ -114,7 +77,7 @@ footer a{
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
-.whole {
+section{
   margin: 4%;
 }
 .jumbotron h1 {
@@ -128,7 +91,11 @@ footer a{
     margin-bottom: 20px;
 }
 
+ .browse h1{
+   margin-top: 20px;
+   text-align: center;
 
+}
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -148,6 +115,7 @@ hr {
     margin: 8px;
     height: 2px;
 }
+
 
 .formcontainer {
   width: 300px;
@@ -178,8 +146,100 @@ input {
 .sign  button:hover {
   background-color: #45a049;
 }
-
-b{
-  font-size: 14px;
-  margin-bottom: 10px;
+.menu-bar {
+  background-color: #000000;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
 }
+
+.logo {
+  font-size: 40px;
+  font-weight: bold;
+  user-select: none;
+}
+
+.menu-items {
+  display: flex;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.menu-items a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.menu-items a:hover {
+color: rgb(255, 17, 0);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn i {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0; 
+}
+
+.dropdown-content a {
+  background-color: #000;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+ color: #ff0202;
+ background-color: #000000;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+@media screen and (max-width: 550px) {
+ .logo{
+ font-size: 20px;
+}
+.menu-items a{
+  margin-left: 0;
+  font-size: 15px;
+  padding: 8px;
+}
+}
+@media screen and (max-width: 438px) {
+  .logo{
+    margin-left: 4px;
+}
+ }
+ @media screen and (max-width: 358px) {
+  .logo{
+    margin-left:0;
+}
+.menu-items a{
+  padding:2px;
+}
+
+ }
